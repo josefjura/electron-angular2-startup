@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "electron": "electron build"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0",
+    "fs-jetpack": "^0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5",
+    "gulp-typescript": "^2.10.0",
+    "typescript": "^1.7.3"
+  }
+}
