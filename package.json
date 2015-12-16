@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "debug" : "gulp build && electron build",
     "electron": "electron build"
   },
   "devDependencies": {
