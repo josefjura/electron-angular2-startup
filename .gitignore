@@ -7,3 +7,4 @@ build
 
 # Typings directory
 typings
+.vscode/
