@@ -11,13 +11,19 @@ gulp.task('clean', function () {
 	return dest.dir('.', { empty: true });
 })
 
-gulp.task("copy-html", ['clean'], function () {
+gulp.task("copy", ['clean'], function () {
 	src.copy('.', dest.path(), {
 		overwrite: true,
-		matching: ['*.html', '*.png', '*.jpg', '*.json', './node_modules/**/*']
+		matching: ['*.html', '*.png', '*.jpg', '*.json', '!./node_modules/**/*']
 	});
 });
 
+gulp.task("copy-node", ['clean'], function () {
+	src.copy('.', dest.path(), {
+		overwrite: true,
+		matching: ['./node_modules/**/*']
+	});
+});
 
 var tsProject = tsc.createProject('tsconfig.json');
 gulp.task("compile", ['clean'], function (callback) {
@@ -27,7 +33,7 @@ gulp.task("compile", ['clean'], function (callback) {
 	return tsResult.js.pipe(gulp.dest('build'));
 });
 
-gulp.task("build", ['compile', 'copy-html', 'less'], function () {
+gulp.task("build", ['compile', 'copy', 'copy-node', 'less'], function () {
 
 });
 
