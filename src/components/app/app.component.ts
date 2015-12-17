@@ -10,7 +10,7 @@ import {Page} from '../page/page';
 @Component({
     selector: 'app',
     directives: [ROUTER_DIRECTIVES],
-    templateUrl: 'pages/base/layout.html'
+    templateUrl: 'components/app/app.layout.html'
 })
 
 @RouteConfig([
@@ -21,6 +21,6 @@ import {Page} from '../page/page';
 export class App {
     title: string;
     constructor() {
-        this.title = 'Angular 2 CRUD Application';
+        this.title = 'Angular 2 Startup';
     }
 }

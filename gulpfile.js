@@ -4,7 +4,7 @@ var tsc = require("gulp-typescript");
 var less = require('gulp-less');
 var jetpack = require('fs-jetpack');
 
-var src = jetpack.cwd('app');
+var src = jetpack.cwd('src');
 var dest = jetpack.cwd('build');
 
 gulp.task('clean', function () {
@@ -32,7 +32,7 @@ gulp.task("build", ['compile', 'copy-html', 'less'], function () {
 });
 
 gulp.task('less', ['clean'], function () {
-	return gulp.src('app/stylesheets/main.less')
+	return gulp.src(src.path('stylesheets/main.less'))
         .pipe(less())
         .pipe(gulp.dest(dest.path('stylesheets')));
 });

@@ -6,7 +6,7 @@ import {Component} from 'angular2/core';
 
 // Simple component
 @Component({
-    templateUrl: 'pages/index/index.html'
+    templateUrl: 'components/index/index.html'
 })
 
 export class Index { }
