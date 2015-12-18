@@ -6,3 +6,16 @@ This startup is using Angular2 BETA version, which should now be stable to devel
 I decided to do the structure as src/dist with gulp build and watch scripts and electron-connect as a reloading module for development. As a stylesheet preprocessor, I chose LESS because it seems to be a bit of a biolerplate code standard.
 
 Any help or advice will be highly appreciated
+
+Installation (I will streamline the proces as I clean the project structure) :
+
+* Clone repo: *git clone https://github.com/josefjura/electron-angular2-startup.git*
+* Install dev dependencies: *cd electron-angular2-startup && npm install*
+* Install dependencies: *cd src && npm install*
+* *cd ..*
+* Install gulp and tsd: *npm install gulp tsd -g*
+* Install typings: *tsd install*
+* Build the source: *gulp build*
+* Run in debug mode: *npm run debug*
+
+
