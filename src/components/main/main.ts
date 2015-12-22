@@ -6,7 +6,7 @@ import {Component} from 'angular2/core';
 
 // Simple component
 @Component({
-    templateUrl: 'components/page/page.html'
+    templateUrl: 'components/main/main.html'
 })
 
-export class Page { }
+export class Main { }

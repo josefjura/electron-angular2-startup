@@ -4,8 +4,8 @@
 import {Component, View} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {Index} from '../index/index';
-import {Page} from '../page/page';
+import {Main} from '../main/main';
+import {Other} from '../other/other';
 
 @Component({
     selector: 'app',
@@ -14,8 +14,8 @@ import {Page} from '../page/page';
 })
 
 @RouteConfig([
-    { path: '/', name: 'Index', component: Index, useAsDefault: true },
-    { path: '/page', name: 'Page', component: Page }
+    { path: '/main', name: 'Main', component: Main, useAsDefault: true },
+    { path: '/other', name: 'Other', component: Other }
 ])
 
 export class App {
