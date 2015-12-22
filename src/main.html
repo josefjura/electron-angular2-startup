@@ -14,17 +14,16 @@
     <script src="node_modules/es6-shim/es6-shim.js"></script>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
 
     <script>
-        System.config({
-            defaultJSExtensions: true,
-            paths: {
-            '*': '*.js',
-            'angular2/*': 'node_modules/angular2/*.js',
-            'rxjs/*': 'node_modules/rxjs/*.js'
-            }
-      });
-      System.import('components/app/app.boot')
+        System.config({packages: {
+            components: {format: 'register',defaultExtension: 'js'},
+            services: {format: 'register',defaultExtension: 'js'}
+            }});
+        System.import('components/app/app.boot')
             .then(null, console.error.bind(console));
     </script>
     <app>
