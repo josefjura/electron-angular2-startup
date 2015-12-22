@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "debug" : "gulp build && electron build",
+    "debug": "gulp build && electron build",
     "electron": "electron build"
   },
   "devDependencies": {

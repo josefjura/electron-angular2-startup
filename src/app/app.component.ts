@@ -1,16 +1,16 @@
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
 // Angular 2
 import {Component, View} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {Main} from '../main/main';
-import {Other} from '../other/other';
+import {Main} from './components/main';
+import {Other} from './components/other';
 
 @Component({
     selector: 'app',
     directives: [ROUTER_DIRECTIVES],
-    templateUrl: 'components/app/app.layout.html'
+    templateUrl: './app/app.layout.html'
 })
 
 @RouteConfig([

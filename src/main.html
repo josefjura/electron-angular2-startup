@@ -20,10 +20,9 @@
 
     <script>
         System.config({packages: {
-            components: {format: 'register',defaultExtension: 'js'},
-            services: {format: 'register',defaultExtension: 'js'}
+            app: {format: 'register',defaultExtension: 'js'}
             }});
-        System.import('components/app/app.boot')
+        System.import('app/app.boot')
             .then(null, console.error.bind(console));
     </script>
     <app>
