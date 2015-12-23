@@ -15,7 +15,6 @@ Installation (I will streamline the proces as I clean the project structure) :
 * *cd ..*
 * Install gulp and tsd: *npm install gulp tsd -g*
 * Install typings: *tsd install*
-* Build the source: *gulp build*
-* Run in debug mode: *npm run debug*
+* Run in debug mode: *npm run start*
 
 

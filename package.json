@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "debug": "gulp build && electron build",
-    "electron": "electron build"
+    "start": "gulp build && electron build",
+    "build": "gulp build",
+    "run": "electron build"
   },
   "devDependencies": {
     "electron-prebuilt": "^0.36.0",
