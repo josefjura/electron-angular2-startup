@@ -14,9 +14,13 @@ gulp.task('clear', function () {
     return temp.dir('.', { empty: true });
 });
 
-
+var platforms = ['darwin', 'linux', 'win32'];
 gulp.task('release', ['clear'], function (cb) {
+
     var platform = argv.platform || 'win32';
+    if (platforms.indexOf(platform) === -1) {
+        return cb("Unknown platform '" + platform + "'. Supported platforms are: "+platforms.join(", ")+".");
+    }
 
     packager({
         dir: build.path(),
@@ -32,10 +36,21 @@ gulp.task('release', ['clear'], function (cb) {
             gutil.log(err);
             return;
         };
-
-        createInstallers(env, appPath, function () {
-            cb(err);
-        });
+        if (platform === 'win32') {
+            createInstallers(env, appPath, function () {
+                cb(err);
+            });
+        }
+        else {
+            gutil.log("Package created, installer can be currently created only on win32 platform. Copying packages to release folder");
+            for (var pathIndex in appPath) {
+                if (appPath.hasOwnProperty(pathIndex)) {
+                    var path = appPath[pathIndex];
+                    var target = path.replace('\\temp\\', '\\release\\');
+                    jetpack.copy(path, target, { overwrite: true });
+                }
+            }
+        }
     });
 });
 
