@@ -73,7 +73,7 @@ Entry point of electron app, loads System.js and starts application boot. Vendor
 Electron app bootstrap, modified version of the standard loader from https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md
 
 ### src/app
-This folder contains all the scripting. All the scripting is meant to be written in Typescript.
+This folder contains all the scripting (written in Typescript).
 
 #### app.boot.ts
 Angular2 booting logic
