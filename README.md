@@ -19,7 +19,7 @@ Installation (I will streamline the proces as I clean the project structure) :
 ## Project.json
 
 To simplify package.json content and keep clean node_modules directory, the file is split in two: one in project root and one in src directory.
-This approach is inspired by [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) and works very well.
+This approach is inspired by [electron-boilerplate](https://github.com/szwacz/electron-boilerplate).
 
 Because of this, there are three scenarios of installing dependencies:
 
