@@ -11,6 +11,9 @@ temp
 # Release directory
 release
 
+# Log files
+*.log
+
 # Typings directory
 typings
 .vscode/
