@@ -9,13 +9,13 @@ var inject = require('gulp-inject');
 var src = jetpack.cwd('src');
 var dest = jetpack.cwd('build');
 
-var vendor_paths_dev = [
-    'src/node_modules/angular2/bundles/angular2.dev.js',
-    'src/node_modules/angular2/bundles/router.dev.js',
-    'src/node_modules/systemjs/dist/system.src.js',
-    'src/node_modules/rxjs/bundles/Rx.js',
-    'src/node_modules/es6-shim/es6-shim.js',
-    'src/node_modules/angular2/bundles/angular2-polyfills.js'
+var vendor_bundles_dev = [
+    'node_modules/angular2/bundles/angular2.dev.js',
+    'node_modules/angular2/bundles/router.dev.js',
+    'node_modules/systemjs/dist/system.src.js',
+    'node_modules/rxjs/bundles/Rx.js',
+    'node_modules/es6-shim/es6-shim.js',
+    'node_modules/angular2/bundles/angular2-polyfills.js'
 ]
 
 gulp.task('clean', function () {
@@ -25,12 +25,12 @@ gulp.task('clean', function () {
 gulp.task("copy", ['clean'], function () {
     src.copy('.', dest.path(), {
         overwrite: true,
-        matching: ['*.html', '*.png', '*.jpg', '*.json', '!./node_modules/**']
+        matching: ['*.html', '*.png', '*.jpg', '*.json', './node_modules/**/*']
     });
 });
 
-gulp.task("copy-vendor-js", ['clean'], function () {
-    return gulp.src(vendor_paths_dev)
+gulp.task("copy-vendor-bundles", ['clean'], function () {
+    return gulp.src(vendor_bundles_dev)
         .pipe(gulp.dest(dest.path('vendor')));
 });
 
@@ -40,7 +40,7 @@ var injectOptions = {
     }
 };
 
-gulp.task('inject-vendor-js', ['copy', 'copy-vendor-js'], function () {
+gulp.task('inject-vendor-js', ['copy', 'copy-vendor-bundles'], function () {
     var vendors = gulp.src(['./vendor/*.js', '!./vendor/system.src.js'], { cwd: './build' });
 
     return gulp.src('main.html', { cwd: './build' })
@@ -63,7 +63,7 @@ gulp.task("compile-with-maps", ['clean'], function (callback) {
         .pipe(gulp.dest('build'))
 });
 
-gulp.task("build", ['compile', 'copy', 'copy-vendor-js', 'inject-vendor-js', 'less'], function () {
+gulp.task("build", ['compile', 'copy', 'copy-vendor-bundles', 'inject-vendor-js', 'less'], function () {
 
 });
 
