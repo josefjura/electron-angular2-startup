@@ -79,10 +79,10 @@ This folder contains all the scripting (written in Typescript).
 Angular2 booting logic
 
 #### app.component.ts
-Application component definition, also contains the routing initialization. As this is a fairly specific component I decided to move it out of the components folder.
+Application component definition, also contains the routing initialization. As this is a fairly specific component I decided to move it out of the 'components' folder.
 
 #### app.component.ts
-Application layout. As this is a fairly specific component I decided to move it here from the templates folder.
+Application layout. As this is a fairly specific template I decided to move it here from the 'templates' folder.
 
 ### src/app/common
 Directory containing all common scripts
