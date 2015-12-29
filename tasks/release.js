@@ -18,7 +18,7 @@ gulp.task('clear', function () {
 gulp.task('release', ['clear'], function (cb) {
 
     var platform = util.getPlatform();
-    if (util.isPlatformValid(platform)) {
+    if (!util.isPlatformValid(platform)) {
         return cb("Unknown platform '" + platform + "'. Supported platforms are: " + util.platforms.join(", ") + ".");
     }
 
@@ -29,7 +29,7 @@ gulp.task('release', ['clear'], function (cb) {
         name: env.name,
         platform: platform,
         arch: 'all',
-        version: '0.36.1',
+        version: util.getElectronVersion(),
         overwrite: true
     }, function done(err, appPath) {
         if (err || !appPath) {
