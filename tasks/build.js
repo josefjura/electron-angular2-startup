@@ -78,7 +78,7 @@ gulp.task("compile-with-maps", ['clean'], function (callback) {
         .pipe(gulp.dest('build'))
 });
 
-gulp.task("build", ['compile', 'copy', 'copy-vendor-bundles', 'copy-configs', 'inject-vendor-js', 'less'], function () {
+gulp.task("build", ['compile', 'copy', 'copy-vendor-bundles', 'copy-configs', 'inject-vendor-js', 'less', 'less-inject'], function () {
 
 });
 
@@ -86,4 +86,12 @@ gulp.task('less', ['clean'], function () {
     return gulp.src(src.path('stylesheets/main.less'))
         .pipe(less())
         .pipe(gulp.dest(dest.path('stylesheets')));
+});
+
+gulp.task('less-inject', ['clean', 'less'], function () {
+    var stylesheets = gulp.src('./stylesheets/*.css', { cwd: dest.path(), read: false });
+
+    return gulp.src('main.html', { cwd: dest.path() })
+        .pipe(inject(stylesheets, injectOptions))
+        .pipe(gulp.dest(dest.path()));
 });
