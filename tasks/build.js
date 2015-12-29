@@ -26,7 +26,7 @@ gulp.task('clean', function () {
 gulp.task("copy", ['clean'], function () {
     src.copy('.', dest.path(), {
         overwrite: true,
-        matching: ['*.html', '*.png', '*.jpg', './node_modules/**/*']
+        matching: ['main.html','app/app.layout.html','./templates/*.html', '*./assets/**/*', './node_modules/**/*']
     });
 });
 
