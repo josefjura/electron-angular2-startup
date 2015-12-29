@@ -5,6 +5,15 @@ node_modules
 # Build directory
 build
 
+# Temp directory
+temp
+
+# Release directory
+release
+
+# Log files
+*.log
+
 # Typings directory
 typings
 .vscode/

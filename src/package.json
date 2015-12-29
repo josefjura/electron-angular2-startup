@@ -1,29 +1,23 @@
 {
-    "name": "electron-angular2-startup",
-    "version": "0.1.0",
-    "main": "background.js",
-    "description": "Basic startup structure for projects developed using electron and angular2",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/josefjura/electron-angular2-startup.git"
-    },
-    "keywords": [
-        "electron",
-        "angular2"
-    ],
-    "author": "Josef Jura",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/josefjura/electron-angular2-startup/issues"
-    },
-    "homepage": "https://github.com/josefjura/electron-angular2-startup#readme",
-    "dependencies": {
-        "angular2": "2.0.0-beta.0",
-        "es6-promise": "^3.0.2",
-        "es6-shim": "^0.33.13",
-        "reflect-metadata": "0.1.2",
-        "rxjs": "^5.0.0-beta.0",
-        "systemjs": "^0.19.6",
-        "zone.js": "0.5.10"
-    }
+  "name": "electron-angular2-startup",
+  "version": "0.1.0",
+  "main": "background.js",
+  "description": "Basic startup structure for projects developed using electron and angular2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josefjura/electron-angular2-startup.git"
+  },
+  "keywords": [
+    "electron",
+    "angular2"
+  ],
+  "author": "Josef Jura",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josefjura/electron-angular2-startup/issues"
+  },
+  "homepage": "https://github.com/josefjura/electron-angular2-startup#readme",
+  "dependencies": {
+	"electron-squirrel-startup": "^0.1.4"
+  }
 }
