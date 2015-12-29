@@ -15,7 +15,7 @@ var vendor_paths_dev = [
     'src/node_modules/systemjs/dist/system.src.js',
     'src/node_modules/rxjs/bundles/Rx.js',
     'src/node_modules/es6-shim/es6-shim.js',
-    'src/node_modules/angular2/bundles/angular2-polyfills.js',
+    'src/node_modules/angular2/bundles/angular2-polyfills.js'
 ]
 
 gulp.task('clean', function () {
@@ -34,11 +34,17 @@ gulp.task("copy-vendor-js", ['clean'], function () {
         .pipe(gulp.dest(dest.path('vendor')));
 });
 
-gulp.task('inject-vendor-js', ['copy', 'copy-vendor-js'], function () {
-    var vendors = gulp.src(dest.path('./vendor/*.js'));
+var injectOptions = {
+    transform: function (filepath) {
+        return "<script src='." + filepath + "'></script>";
+    }
+};
 
-    return gulp.src(src.path('main.html'))
-        .pipe(inject(vendors, { relative: true }))
+gulp.task('inject-vendor-js', ['copy', 'copy-vendor-js'], function () {
+    var vendors = gulp.src(['./vendor/*.js', '!./vendor/system.src.js'], { cwd: './build' });
+
+    return gulp.src('main.html', { cwd: './build' })
+        .pipe(inject(vendors, injectOptions))
         .pipe(gulp.dest(dest.path()));
 });
 

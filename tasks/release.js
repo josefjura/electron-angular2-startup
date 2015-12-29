@@ -19,13 +19,13 @@ gulp.task('release', ['clear'], function (cb) {
 
     var platform = argv.platform || 'win32';
     if (platforms.indexOf(platform) === -1) {
-        return cb("Unknown platform '" + platform + "'. Supported platforms are: "+platforms.join(", ")+".");
+        return cb("Unknown platform '" + platform + "'. Supported platforms are: " + platforms.join(", ") + ".");
     }
 
     packager({
         dir: build.path(),
         out: temp.path(env.version),
-        asar: true,
+        asar: false,
         name: env.name,
         platform: platform,
         arch: 'all',
@@ -42,7 +42,7 @@ gulp.task('release', ['clear'], function (cb) {
             });
         }
         else {
-            gutil.log("Package created, installer can be currently created only on win32 platform. Copying packages to release folder");
+            gutil.log("Packages created, installer can be currently created only on win32 platform. Copying packages to release folder");
             for (var pathIndex in appPath) {
                 if (appPath.hasOwnProperty(pathIndex)) {
                     var path = appPath[pathIndex];
