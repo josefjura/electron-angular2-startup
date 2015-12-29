@@ -1,5 +1,5 @@
 # electron-angular2-startup
-Basic project structure with build tasks for angular2 and electron projects.
+Basic project structure with build tasks for angular2 and electron projects. I am trying to create a project guidelines a will use in the future.
 
 This startup is using Angular2 BETA version, which should now be stable to develop with. Note that some tutorials on the internet will not work, as they might be written for the alfa version.
 I decided to do the structure as src/dist with gulp build scripts, as a stylesheet preprocessor I chose LESS because it seems to be a bit of a biolerplate code standard.
@@ -16,6 +16,30 @@ Installation (I will streamline the proces as I clean the project structure) :
 * Install typings: *tsd install*
 * Run in debug mode: *npm run start*
 
+## Project.json
+
+To simplify package.json content and keep clean node_modules directory, the file is split in two: one in project root and one in src directory.
+This approach is inspired by [electron-boilerplate](https://github.com/szwacz/electron-boilerplate) and works very well.
+
+Because of this, there are three scenarios of installing dependencies:
+
+### Direct dependencies
+Node modules directly used by application. Saved in src/package.json.
+
+Should be installed by *npm i module_name --save* from the src directory. The whole module is then packaged with build and release.
+
+### Bundled dependencies
+Node modules containing bundled versions. Saved in package.json.
+
+Should be installed by *npm i module_name --save* from the root project directory and adding the bundle file name to *vendor_bundles_dev* array in tasks/build.js.
+The bundle file is then copied to vendor directory and injected to main.html.
+
+This saves time, as the whole content of the node module is not copied with src directory during build and is not packaged during release.
+
+### Development dependencies
+Node modules used only during development. Saved in package.json.
+
+Should be installed by *npm i module_name --save-dev* from the root project directory
 
 ## Source code structure
 
