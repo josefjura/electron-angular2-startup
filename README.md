@@ -41,6 +41,19 @@ Node modules used only during development. Saved in package.json.
 
 Should be installed by *npm i module_name --save-dev* from the root project directory
 
+## Build process
+Build is implemented as a gulp task and runs following subtasks :
+
+* Cleans the build directory
+* Compiles all the typescript files from src directory, preserving the structure
+* Copies all main.html, app.layout.html and all html files from 'templates' directory without modification
+* Copies all files from assets directory
+* Copies all selected bundle files from node_modules to vendor directory and injects them into main.html
+* Copies src/package.json and changes the name and product_name attributes corresponding to selected environment (adds environment code for every environment that is not 'prod').
+* Compiles all LESS stylesheets from stylesheets directory and injects them to main.html
+
+All the artifacts are created or copied to 'build' directory
+
 ## Source code structure
 ### src
 All source code should be stored inside src folder
