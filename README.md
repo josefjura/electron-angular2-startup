@@ -9,7 +9,7 @@ Any help or advice will be highly appreciated
 Installation (I will streamline the proces as I clean the project structure) :
 
 * Clone repo: *git clone https://github.com/josefjura/electron-angular2-startup.git*
-* Install dev dependencies: *cd electron-angular2-startup && npm install*
+* Install development dependencies: *cd electron-angular2-startup && npm install*
 * Install dependencies: *cd src && npm install*
 * *cd ..*
 * Install gulp and tsd: *npm install gulp tsd -g*
