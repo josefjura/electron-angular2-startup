@@ -42,9 +42,7 @@ Node modules used only during development. Saved in package.json.
 Should be installed by *npm i module_name --save-dev* from the root project directory
 
 ## Source code structure
-
 ### src
-
 All source code should be stored inside src folder
 
 #### package.json
@@ -57,7 +55,6 @@ Entry point of electron app, loads System.js and starts application boot. Vendor
 Electron app bootstrap, modified version of the standard loader from https://github.com/atom/electron/blob/master/docs/tutorial/quick-start.md
 
 ### src/app
-
 This folder contains all the scripting. All the scripting is meant to be written in Typescript.
 
 #### app.boot.ts
@@ -70,26 +67,20 @@ Application component definition, also contains the routing initialization. As t
 Application layout. As this is a fairly specific component I decided to move it here from the templates folder.
 
 ### src/app/common
-
 Directory containing all common scripts
 
 ### src/app/components
-
 Directory containing all Angular2 components.
 
 ### src/app/services
-
 Directory containing all Angular2 services.
 
 ### src/assets
-
 Directory containing all the assets used by the application (images, etc.)
 
 ### src/stylesheets
-
 Directory containing application stylesheets written in LESS
 
 ### src/templates
-
 Directory containing the application`s HTML templates
 
