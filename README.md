@@ -35,6 +35,7 @@ Should be installed by *npm i module_name --save* from the root project director
 The bundle file is then copied to vendor directory and injected to main.html.
 
 This saves time, as the whole content of the node module is not copied with src directory during build and is not packaged during release.
+For example Angular2 NPM has currently about 34MB, but the used bundle is somewhere around 1MB.
 
 ### Development dependencies
 Node modules used only during development. Saved in package.json.
@@ -53,6 +54,10 @@ Build is implemented as a gulp task and runs following subtasks :
 * Compiles all LESS stylesheets from stylesheets directory and injects them to main.html
 
 All the artifacts are created or copied to 'build' directory
+
+## Release process
+During release, an application package is built using [electron-packager](https://github.com/maxogden/electron-packager).
+Then, on Windows platform, installer is created using Squirell.Windows platfrom and copied to 'release' directory. On other platforms, release currently results only in the package.
 
 ## Source code structure
 ### src
