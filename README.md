@@ -1,4 +1,4 @@
-# electron-angular2-startup
+# Startup project for Electron and Angular2
 Basic project structure with build tasks for angular2 and electron projects. I am trying to create a project guidelines a will use in the future.
 
 This startup is using Angular2 BETA version, which should now be stable to develop with. Note that some tutorials on the internet will not work, as they might be written for the alfa version.
