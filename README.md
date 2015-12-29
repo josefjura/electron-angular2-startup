@@ -49,6 +49,7 @@ Build is implemented as a gulp task and runs following subtasks :
 * Compiles all the typescript files from src directory, preserving the structure
 * Copies all main.html, app.layout.html and all html files from 'templates' directory without modification
 * Copies all files from assets directory
+* Copies all direct dependencies from src/node_modules
 * Copies all selected bundle files from node_modules to vendor directory and injects them into main.html
 * Copies src/package.json and changes the name and product_name attributes corresponding to selected environment (adds environment code for every environment that is not 'prod').
 * Compiles all LESS stylesheets from stylesheets directory and injects them to main.html
