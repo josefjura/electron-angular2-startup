@@ -5,6 +5,7 @@ var less = require('gulp-less');
 var jetpack = require('fs-jetpack');
 var sourcemaps = require('gulp-sourcemaps');
 var inject = require('gulp-inject');
+var util = require('./utility');
 
 var src = jetpack.cwd('src');
 var dest = jetpack.cwd('build');
@@ -25,7 +26,7 @@ gulp.task('clean', function () {
 gulp.task("copy", ['clean'], function () {
     src.copy('.', dest.path(), {
         overwrite: true,
-        matching: ['*.html', '*.png', '*.jpg', '*.json', './node_modules/**/*']
+        matching: ['*.html', '*.png', '*.jpg', './node_modules/**/*']
     });
 });
 
@@ -34,6 +35,20 @@ gulp.task("copy-vendor-bundles", ['clean'], function () {
         .pipe(gulp.dest(dest.path('vendor')));
 });
 
+gulp.task('copy-configs', function () {
+    var env = util.getEvironmentCode();
+
+    var packconf = src.read('package.json', 'json');
+
+    if (env !== 'prod') {
+        packconf.name += "-" + env;
+        if (packconf.productName)
+            packconf.productName += "-" + env;
+    }
+
+    dest.write('package.json', packconf);
+})
+
 var injectOptions = {
     transform: function (filepath) {
         return "<script src='." + filepath + "'></script>";
@@ -41,9 +56,9 @@ var injectOptions = {
 };
 
 gulp.task('inject-vendor-js', ['copy', 'copy-vendor-bundles'], function () {
-    var vendors = gulp.src(['./vendor/*.js', '!./vendor/system.src.js'], { cwd: './build' });
+    var vendors = gulp.src(['./vendor/*.js', '!./vendor/system.src.js'], { cwd: dest.path() });
 
-    return gulp.src('main.html', { cwd: './build' })
+    return gulp.src('main.html', { cwd: dest.path() })
         .pipe(inject(vendors, injectOptions))
         .pipe(gulp.dest(dest.path()));
 });
@@ -63,7 +78,7 @@ gulp.task("compile-with-maps", ['clean'], function (callback) {
         .pipe(gulp.dest('build'))
 });
 
-gulp.task("build", ['compile', 'copy', 'copy-vendor-bundles', 'inject-vendor-js', 'less'], function () {
+gulp.task("build", ['compile', 'copy', 'copy-vendor-bundles', 'copy-configs', 'inject-vendor-js', 'less'], function () {
 
 });
 

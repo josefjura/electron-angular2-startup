@@ -4,7 +4,7 @@ var packager = require('electron-packager');
 var createInstallers = require('./create-installers');
 var jetpack = require('fs-jetpack');
 var env = jetpack.read('./src/package.json', 'json');
-var argv = require('yargs').argv;
+var util = require('./utility');
 
 var temp = jetpack.cwd('temp');
 var build = jetpack.cwd('build');
@@ -14,12 +14,12 @@ gulp.task('clear', function () {
     return temp.dir('.', { empty: true });
 });
 
-var platforms = ['darwin', 'linux', 'win32'];
+
 gulp.task('release', ['clear'], function (cb) {
 
-    var platform = argv.platform || 'win32';
-    if (platforms.indexOf(platform) === -1) {
-        return cb("Unknown platform '" + platform + "'. Supported platforms are: " + platforms.join(", ") + ".");
+    var platform = util.getPlatform();
+    if (util.isPlatformValid(platform)) {
+        return cb("Unknown platform '" + platform + "'. Supported platforms are: " + util.platforms.join(", ") + ".");
     }
 
     packager({
