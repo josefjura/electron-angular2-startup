@@ -2,6 +2,7 @@
   "scripts": {
     "start": "gulp build && electron build",
     "build": "gulp build",
+    "release" : "gulp release --env=prod",
     "run": "electron build"
   },
   "devDependencies": {

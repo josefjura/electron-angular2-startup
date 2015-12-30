@@ -26,7 +26,7 @@ gulp.task('clean', function () {
 gulp.task("copy", ['clean'], function () {
     src.copy('.', dest.path(), {
         overwrite: true,
-        matching: ['main.html','app/app.layout.html','./templates/*.html', '*./assets/**/*', './node_modules/**/*']
+        matching: ['main.html', 'app/app.layout.html', './templates/*.html', '*./assets/**/*', './node_modules/**/*']
     });
 });
 
@@ -78,9 +78,13 @@ gulp.task("compile-with-maps", ['clean'], function (callback) {
         .pipe(gulp.dest('build'))
 });
 
-gulp.task("build", ['compile', 'copy', 'copy-vendor-bundles', 'copy-configs', 'inject-vendor-js', 'less', 'less-inject'], function () {
+gulp.task("build", ['build-head', 'compile', 'copy', 'copy-vendor-bundles', 'copy-configs', 'inject-vendor-js', 'less', 'less-inject'], function () {
 
 });
+
+gulp.task('build-head', function (cb) {
+    gutil.log("Building in " + util.getEvironmentCode().toUpperCase() + " environment against Electron v" + util.getElectronVersion() + "");
+})
 
 gulp.task('less', ['clean'], function () {
     return gulp.src(src.path('stylesheets/main.less'))
