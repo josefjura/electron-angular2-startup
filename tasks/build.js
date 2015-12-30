@@ -26,7 +26,7 @@ gulp.task('clean', function () {
 gulp.task("copy", ['clean'], function () {
     src.copy('.', dest.path(), {
         overwrite: true,
-        matching: ['main.html', 'app/app.layout.html', './templates/*.html', '*./assets/**/*', './node_modules/**/*']
+        matching: ['main.html', 'app/app.layout.html', './templates/*.html', './assets/**/*', './node_modules/**/*']
     });
 });
 
@@ -82,7 +82,7 @@ gulp.task("build", ['build-head', 'compile', 'copy', 'copy-vendor-bundles', 'cop
 
 });
 
-gulp.task('build-head', function (cb) {
+gulp.task('build-head', ['clean'], function (cb) {
     gutil.log("Building in " + util.getEvironmentCode().toUpperCase() + " environment against Electron v" + util.getElectronVersion() + "");
 })
 
