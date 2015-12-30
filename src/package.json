@@ -1,6 +1,6 @@
 {
   "name": "electron-angular2-startup",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "background.js",
   "description": "Basic startup structure for projects developed using electron and angular2",
   "repository": {
