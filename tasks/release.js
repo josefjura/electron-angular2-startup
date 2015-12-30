@@ -10,12 +10,12 @@ var temp = jetpack.cwd('temp');
 var build = jetpack.cwd('build');
 var release = jetpack.cwd('release');
 
-gulp.task('clear', function () {
+gulp.task('clear-temp', function () {
     return temp.dir('.', { empty: true });
 });
 
 
-gulp.task('release', ['clear'], function (cb) {
+gulp.task('release', ['build', 'clear-temp'], function (cb) {
 
     var platform = util.getPlatform();
     if (!util.isPlatformValid(platform)) {
