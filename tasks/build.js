@@ -50,8 +50,11 @@ gulp.task('copy-configs', function () {
 })
 
 var injectOptions = {
-    transform: function (filepath) {
+    jsTransform: function (filepath) {
         return "<script src='." + filepath + "'></script>";
+    },
+    cssTransform: function (filepath) {
+        return "<link rel='stylesheet' type='text/css' href='." + filepath + "'>";
     }
 };
 
@@ -59,7 +62,7 @@ gulp.task('inject-vendor-js', ['copy', 'copy-vendor-bundles'], function () {
     var vendors = gulp.src(['./vendor/*.js', '!./vendor/system.src.js'], { cwd: dest.path() });
 
     return gulp.src('main.html', { cwd: dest.path() })
-        .pipe(inject(vendors, injectOptions))
+        .pipe(inject(vendors, { transform: injectOptions.jsTransform }))
         .pipe(gulp.dest(dest.path()));
 });
 
@@ -96,6 +99,6 @@ gulp.task('less-inject', ['clean', 'less'], function () {
     var stylesheets = gulp.src('./stylesheets/*.css', { cwd: dest.path(), read: false });
 
     return gulp.src('main.html', { cwd: dest.path() })
-        .pipe(inject(stylesheets, injectOptions))
+        .pipe(inject(stylesheets, { transform: injectOptions.cssTransform }))
         .pipe(gulp.dest(dest.path()));
 });
